@@ -1,0 +1,225 @@
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+user-select: none;
+-webkit-user-select: none;
+}
+
+body, html {
+width: 100%;
+height: 100%;
+overflow: hidden;
+background-color: #000;
+font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+#game-container {
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+#game-container canvas {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+/* CROSSHAIR */
+#crosshair {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+z-index: 10;
+}
+
+.ch-line {
+position: absolute;
+background-color: #ffffff;
+box-shadow: 0 0 2px #000;
+}
+
+.ch-line.top { width: 2px; height: 10px; top: -14px; left: -1px; }
+.ch-line.bottom { width: 2px; height: 10px; bottom: -14px; left: -1px; }
+.ch-line.left { width: 10px; height: 2px; left: -14px; top: -1px; }
+.ch-line.right { width: 10px; height: 2px; right: -14px; top: -1px; }
+
+.ch-dot {
+width: 4px;
+height: 4px;
+background-color: #ffee00;
+border-radius: 50%;
+position: absolute;
+top: -2px;
+left: -2px;
+box-shadow: 0 0 3px #000;
+}
+
+/* VITALS (HEALTH & SHIELD) */
+#vitals-container {
+position: absolute;
+bottom: 20px;
+left: 20px;
+width: 240px;
+z-index: 10;
+color: #fff;
+font-weight: 700;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.bar-label {
+font-size: 13px;
+letter-spacing: 0.5px;
+margin-bottom: 3px;
+}
+
+.bar-bg {
+width: 100%;
+height: 16px;
+background: rgba(0, 0, 0, 0.65);
+border: 2px solid rgba(255, 255, 255, 0.8);
+border-radius: 4px;
+margin-bottom: 8px;
+overflow: hidden;
+}
+
+.bar-fill {
+height: 100%;
+transition: width 0.15s ease-out;
+}
+
+.bar-fill.shield { background: #00d2ff; }
+.bar-fill.hp { background: #22e654; }
+
+/* MATERIALS */
+#materials-container {
+position: absolute;
+bottom: 20px;
+right: 20px;
+z-index: 10;
+color: #fff;
+font-weight: 700;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+background: rgba(0, 0, 0, 0.55);
+padding: 10px 16px;
+border-radius: 8px;
+border: 1px solid rgba(255, 255, 255, 0.25);
+backdrop-filter: blur(4px);
+}
+
+.mat-item {
+margin-bottom: 4px;
+font-size: 13px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+/* HOTBAR */
+#hotbar {
+position: absolute;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 8px;
+z-index: 10;
+}
+
+.slot {
+width: 64px;
+height: 64px;
+background: rgba(0, 0, 0, 0.65);
+border: 2px solid rgba(255, 255, 255, 0.4);
+border-radius: 6px;
+color: #fff;
+font-size: 11px;
+font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 4px;
+backdrop-filter: blur(4px);
+transition: border-color 0.15s, transform 0.15s;
+}
+
+.slot.active {
+border-color: #ffcc00;
+box-shadow: 0 0 12px rgba(255, 204, 0, 0.8);
+background: rgba(255, 204, 0, 0.25);
+transform: translateY(-2px);
+}
+
+/* CONTROLS GUIDE */
+#controls-hint {
+position: absolute;
+top: 15px;
+left: 15px;
+color: #fff;
+background: rgba(0, 0, 0, 0.55);
+padding: 8px 12px;
+border-radius: 6px;
+font-size: 12px;
+line-height: 1.5;
+z-index: 10;
+border: 1px solid rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(4px);
+}
+
+/* START MENU */
+#menu-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at center, rgba(15, 25, 45, 0.95), rgba(5, 10, 20, 0.98));
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+color: #fff;
+z-index: 20;
+}
+
+#menu-overlay h1 {
+font-size: 44px;
+font-weight: 900;
+color: #ffcc00;
+text-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
+margin-bottom: 6px;
+letter-spacing: 1px;
+}
+
+#menu-overlay p {
+font-size: 16px;
+margin-bottom: 28px;
+color: #88a0c0;
+}
+
+#start-btn {
+padding: 14px 42px;
+font-size: 20px;
+font-weight: 800;
+color: #050a14;
+background: #00ff55;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 0 0 20px rgba(0, 255, 85, 0.6);
+transition: transform 0.15s, background-color 0.15s;
+}
+
+#start-btn:hover {
+transform: scale(1.06);
+background: #26ff6b;
+}
+
+#start-btn:active {
+transform: scale(0.98);
